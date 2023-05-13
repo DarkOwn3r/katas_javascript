@@ -113,6 +113,15 @@ function reverse (word) {
   return reverseStrWord.join('');
 }
 
+function isAllUpperCase(word) {
+  if (typeof word !== 'string') {
+    return false;
+  }
+  if (word === word.toUpperCase()) {
+    return true;
+  }
+}
+
 module.exports = {
   getHelloWorld,
   getStringByCondition,
@@ -126,4 +135,5 @@ module.exports = {
   abbreviateWords,
   filterByWord,
   reverse,
+  isAllUpperCase,
 };
