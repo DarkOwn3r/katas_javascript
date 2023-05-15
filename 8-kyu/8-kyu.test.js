@@ -301,7 +301,7 @@ it("sumNumbersToFinalNumber", () => {
  *  PRUEBA TECNICA:
  * 
  * Descripción
- * Dado tres números enteros a, b y c, devuelve el número más grande obtenido después de insertar los siguientes operadores y paréntesis: +, , ()
+ * Dado tres números enteros a, b y c, devuelve el número más grande obtenido después de insertar los siguientes operadores y paréntesis: +, *, ()
  * En otras palabras, prueba todas las combinaciones posibles de a, b y c con [+()], y devuelve el máximo obtenido (lee las notas para más detalles).
  * 
  * Ejemplo
