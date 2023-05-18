@@ -203,16 +203,15 @@ function largestExpression(a, b, c) {
       typeof c !== 'number') {
     return null;
   }
-  let resultTemp = Infinity;
-  for (let i = 0; i < resultTemp; i++) {
-    let operation1 = a * (b + c);
-    let operation2 = a * b * c;
-    let operation3 = a + b * c;
-    let operation4 = (a + b) * c;
-    let operation5 = a + b + c;
-    resultTemp = Math.max(operation1, operation2, operation3, operation4, operation5);
-  }
-  return resultTemp;
+  const operations = [
+    a * (b + c),
+    a * b * c,
+    a + b * c,
+    (a + b) * c,
+    a + b + c,
+    a * b + c,
+  ]
+  return Math.max(...operations);
 }
 
 module.exports = {
