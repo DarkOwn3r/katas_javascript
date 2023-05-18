@@ -117,9 +117,11 @@ function isAllUpperCase(word) {
   if (typeof word !== 'string') {
     return false;
   }
-  if (word === word.toUpperCase()) {
+  return word === word.toUpperCase();
+/*if (word === word.toUpperCase()) {
     return true;
   }
+  return false; */
 }
 
 function isPalindrome(word) {
@@ -130,9 +132,7 @@ function isPalindrome(word) {
   const strWord = lowerWord.split('');
   const reverseStr = strWord.reverse();
   const reverseWord = reverseStr.join('');
-  if (reverseWord === lowerWord) {
-    return true;
-  }
+  return reverseWord === lowerWord;
 }
 
 function filterAndReverse(word, filter, flag) {
@@ -141,13 +141,20 @@ function filterAndReverse(word, filter, flag) {
       typeof flag !== 'boolean') {
     return null;
   }
+  
+  /* if (flag) {
+     const strWord = word.split(filter);
+     const reverseStr = strWord.reverse();
+     const reverseWord = reverseStr.join('');
+     return reverseWord;
+    } 
+   return word.split(filter).join(''); */
+
+  const phraseFilter = filterByWord(word, filter);
   if (flag) {
-    const strWord = word.split(filter);
-    const reverseStr = strWord.reverse();
-    const reverseWord = reverseStr.join('');
-    return reverseWord;
-  } 
-  return word.split(filter).join('');
+    return reverse(phraseFilter);
+  }
+  return phraseFilter;
 }
 
 function repeatWord(phrase, repeatNumber) {
@@ -171,8 +178,9 @@ function replaceWordInSentence(phrase, flag, word) {
       typeof word !== 'string') {
     return null;
   }
-  const flaglessPhrase = phrase.split(flag);
-  const finalPhrase = flaglessPhrase.join(word);
+  // const flaglessPhrase = phrase.split(flag);
+  // const finalPhrase = flaglessPhrase.join(word);
+  let finalPhrase = phrase.replace(flag, word);
   return finalPhrase;
 }
 
@@ -180,11 +188,11 @@ function sumNumbersToFinalNumber (number) {
   if (typeof number !== 'number' ||
       number < 0)
   return 0;
-  let sumatoria = 0;
+  let sum = 0;
   for (let i = 1; i <=  number; i++) {
-    sumatoria += i;
+    sum += i;
   }
-  return sumatoria;
+  return sum;
 }
 
 //PRUEBA TÉCNICA
