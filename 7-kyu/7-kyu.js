@@ -55,12 +55,16 @@ function convertArrayStringsToArrayNumbers (arrayStrings) {
     return [0];
   }
   let numberArray = [];
-  for (let i = 0; i < arrayStrings.length - 1; i++) {
-    if (typeof arrayStrings[i] !== 'number' &&
-        typeof arrayStrings[i] !== 'string') {
-      numberArray.push(parseInt(0));
+  for (let i = 0; i < arrayStrings.length; i++) {
+    if (typeof arrayStrings[i] !== 'string') {
+      numberArray.push(0);
     } else {
-    numberArray.push(parseInt(arrayStrings[i]));
+      let number = parseInt(arrayStrings[i]);
+      if (isNaN(number)) {
+          numberArray.push(0);
+        } else {
+          numberArray.push(number);
+        }
     }
   }
   return numberArray;
