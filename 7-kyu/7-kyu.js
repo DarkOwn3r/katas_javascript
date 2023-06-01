@@ -107,6 +107,37 @@ function findDuplicates(array) {
   return duplicatedItems;
 }
 
+function convertNumberToStringWords(number) {
+  if (typeof number !== "number") {
+    return "";
+  }
+  const numbersInString = [
+    "zero",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+  ];
+  const prefixNeg = "neg";
+  let numberToString = "";
+  if (number < 0) {
+    numberToString += `${prefixNeg}.`;
+    number = Math.abs(number);
+  }
+  const digits = String(number).split("");
+  const digitsToString = [];
+  for (const digit of digits) {
+    digitsToString.push(numbersInString[digit]);
+  }
+  numberToString += digitsToString.join(".");
+  return numberToString;
+}
+
 module.exports = {
   getAVG,
   replaceVocalWithPosition,
@@ -115,4 +146,5 @@ module.exports = {
   removeValues,
   buildArray,
   findDuplicates,
+  convertNumberToStringWords,
 };
