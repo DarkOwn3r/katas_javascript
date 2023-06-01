@@ -55,17 +55,15 @@ function convertArrayStringsToArrayNumbers (arrayStrings) {
     return [0];
   }
   let numberArray = [];
-  for (let i = 0; i < arrayStrings.length; i++) {
-    if (typeof arrayStrings[i] !== 'string') {
-      numberArray.push(0);
-    } else {
-      let number = parseInt(arrayStrings[i]);
-      if (isNaN(number)) {
-          numberArray.push(0);
-        } else {
-          numberArray.push(number);
-        }
+  for (const string of arrayStrings) {
+    let number = 0;
+    if (typeof string === 'string') {
+      const numberOfString = parseInt(string);
+      if (!isNaN(numberOfString)) {
+        number = numberOfString;
+      }
     }
+    numberArray.push(number);
   }
   return numberArray;
 }
@@ -82,12 +80,8 @@ function removeValues (firstArray, secondArray) {
   if (!Array.isArray(secondArray)) {
     return firstArray;
   }
-  let newArray = [];
-  firstArray.forEach((element) => {
-      if (!secondArray.includes(element)) {
-        newArray.push(element);
-    }
-  })
+  const newArray = firstArray.filter(
+                    element => (!secondArray.includes(element)))
   return newArray;
 }
 
@@ -104,11 +98,29 @@ function buildArray(n, value1, value2) {
   return array;
 }
 
+function findDuplicates(array) {
+  if (!Array.isArray(array)) {
+    let emptyArray = [];
+    return emptyArray;
+  }
+  const uniqueItems = [];
+  const duplicatedItems = [];
+  array.forEach((element) => {
+    if (!uniqueItems.includes(element)) {
+      uniqueItems.push(element);
+    } else if (!duplicatedItems.includes(element)){
+      duplicatedItems.push(element);
+    }
+  })
+  return duplicatedItems;
+}
+
 module.exports = {
   getAVG,
   replaceVocalWithPosition, 
   convertArrayStringsToArrayNumbers,
   getCenturyByYear,
   removeValues,
-  buildArray
+  buildArray,
+  findDuplicates
 };
