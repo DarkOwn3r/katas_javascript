@@ -74,8 +74,21 @@ function getCenturyByYear (year) {
   return Math.floor((year-1)/100) + 1;
 }
 
-function removeValues () {
-  
+function removeValues (firstArray, secondArray) {
+  if (!Array.isArray(firstArray)) {
+    let emptyArray = [];
+    return emptyArray;
+  }
+  if (!Array.isArray(secondArray)) {
+    return firstArray;
+  }
+  let newArray = [];
+  firstArray.forEach((element) => {
+      if (!secondArray.includes(element)) {
+        newArray.push(element);
+    }
+  })
+  return newArray;
 }
 
 function buildArray(n, value1, value2) {
