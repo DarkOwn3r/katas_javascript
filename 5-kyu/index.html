@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pokémon Highest Name</title>
+</head>
+<body>
+  <h1>Pokémon Highest Name</h1>
+  <p id="result"></p>
+
+
+  <script src="5-kyu.js"></script>
+  <script>
+    // Llamar a la función getHighestPokemonName con los valores 25 y 13
+    const highestNamePromise = getHighestPokemonName(25, 1323232);
+
+    highestNamePromise.then((highestName) => {
+      // Mostrar el resultado en el elemento con el id "result"
+      const resultElement = document.getElementById("result");
+      resultElement.textContent = highestName;
+    });
+  </script>
+</body>
+</html>
